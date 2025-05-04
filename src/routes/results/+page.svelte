@@ -9,36 +9,41 @@
 	let { data }: Props = $props();
 </script>
 
-<h1>Benchmark Runs</h1>
+<div class="container mx-auto p-4">
+	<h1 class="mb-4 text-3xl font-bold">Benchmark Runs</h1>
 
-<!-- Example list structure -->
-<ul>
-	{#each data.runs as run}
-		<li>
-			<a href={`/results/${run.run_id}`}>
-				Run {run.run_id}: {run.llm_model} on {new Date(
-					run.timestamp,
-				).toLocaleString()} - {run.overall_status}
-			</a>
-		</li>
-	{/each}
-</ul>
-
-<style>
-	/* Add some basic styling */
-	ul {
-		list-style: none;
-		padding: 0;
-	}
-	li {
-		margin-bottom: 10px;
-		border: 1px solid #ccc;
-		padding: 10px;
-		border-radius: 4px;
-	}
-	a {
-		text-decoration: none;
-		color: inherit;
-		display: block;
-	}
-</style>
+	<!-- Example list structure -->
+	{#if data.runs && data.runs.length > 0}
+		<ul>
+			{#each data.runs as run (run.run_id)}
+				<!-- Added key for better performance/animations -->
+				<li class="mb-2 rounded border p-4">
+					<a
+						href={`/results/${run.run_id}`}
+						class="link link-hover block"
+					>
+						<!-- Added block to make link fill li -->
+						<p class="mb-1 text-lg font-semibold">
+							Run {run.run_id}: {run.llm_model}
+						</p>
+						<p class="mb-1 text-sm text-gray-600">
+							on {new Date(run.timestamp).toLocaleString()}
+						</p>
+						<p class="text-md">
+							Status: <span
+								class={run.overall_status === 'passed'
+									? 'text-success'
+									: run.overall_status === 'failed'
+										? 'text-error'
+										: 'text-warning'}>{run.overall_status}</span
+							>
+						</p>
+						<!-- Styled status -->
+					</a>
+				</li>
+			{/each}
+		</ul>
+	{:else}
+		<p>No benchmark runs available yet.</p>
+	{/if}
+</div>

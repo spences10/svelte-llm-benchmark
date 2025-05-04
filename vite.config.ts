@@ -15,7 +15,10 @@ export default defineConfig({
 					environment: 'jsdom',
 					clearMocks: true,
 					// Include both Svelte component tests and humaneval tests
-					include: ['src/**/*.svelte.{test,spec}.{js,ts}', 'src/humaneval/**/*.test.ts'],
+					include: [
+						'src/**/*.svelte.{test,spec}.{js,ts}',
+						'src/humaneval/**/*.test.ts',
+					],
 					exclude: ['src/lib/server/**'],
 					setupFiles: ['./vitest-setup-client.ts'],
 				},
@@ -27,7 +30,10 @@ export default defineConfig({
 					environment: 'node',
 					include: ['src/**/*.{test,spec}.{js,ts}'],
 					// Exclude Svelte component tests AND humaneval tests from server environment
-					exclude: ['src/**/*.svelte.{test,spec}.{js,ts}', 'src/humaneval/**/*.test.ts'],
+					exclude: [
+						'src/**/*.svelte.{test,spec}.{js,ts}',
+						'src/humaneval/**/*.test.ts',
+					],
 				},
 			},
 		],

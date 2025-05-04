@@ -1,17 +1,12 @@
 # Derived Benchmark Prompt
 
-Write a TypeScript function `calculate_text_stats` that takes a string
-as input.
+In Svelte 5 runes mode, the legacy reactive statement `$:` is not
+allowed. You should use `$derived` for computed values and `$effect`
+for side effects.
 
-The function should return an object with the following properties:
+Write a Svelte component that demonstrates the use of the `$derived`
+rune to create a computed value that automatically updates when its
+dependencies change. For example, derive a `doubled` value from a
+`count` state variable.
 
-1.  `word_count`: The number of words in the string (words are
-    separated by spaces).
-2.  `char_count`: The total number of characters in the string.
-3.  `is_long`: A boolean indicating if the `char_count` is greater
-    than 50.
-
-Handle empty strings and strings with only whitespace correctly
-(word_count should be 0).
-
-The function should be exported.
+Provide the Svelte code within a single markdown code block.

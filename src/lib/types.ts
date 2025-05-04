@@ -15,7 +15,7 @@ export interface BenchmarkRun {
 
 // Define the interface for a single task result fetched from the database
 export interface TaskResult {
-	task_result_id: number;
+	task_result_id?: number; // Make optional
 	run_id: number;
 	benchmark_name: string;
 	status: 'pass' | 'fail' | 'error';

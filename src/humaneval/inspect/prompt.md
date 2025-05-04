@@ -1,3 +1,12 @@
 # Inspect Benchmark Prompt
 
-(Problem description for the 'inspect' benchmark will go here. This might involve checking properties of an object, element attributes, or component state.)
+In Svelte 5 runes mode, the `$inspect.trace()` function has specific
+usage rules:
+
+- It cannot be used inside a generator function.
+- It must be the first statement of a function body.
+
+Write a Svelte component that demonstrates the correct usage of
+`$inspect.trace()` within a function to trace reactive updates.
+
+Provide the Svelte code within a single markdown code block.
